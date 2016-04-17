@@ -1,7 +1,5 @@
 CACHE MANIFEST
 # v1 2011-08-14
 # これは別のコメントです
-index.html
-cache.html
-style.css
-image1.png
+*
+*.*
