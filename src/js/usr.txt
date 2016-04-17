@@ -1,0 +1,10 @@
+
+function saveUs(){
+    
+    var Usr = ncmb.DataStore("Usr");
+    var usr = new Usr();
+    
+    usr.set("Name", "kuro")
+       .set("Score", 55)
+       .save();
+}

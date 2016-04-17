@@ -3,8 +3,10 @@
 var gulp = require('gulp');
 var plumber = require('gulp-plumber');
 var autoPrefixer = require('gulp-autoprefixer');
-var babel = require('gulp-babel');
-var browserify = require('gulp-browserify');
+var babelify = require('babelify');
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
+
 gulp.task('css',function(){
   gulp.src(['src/css/**/*.css'])
     .pipe(plumber({
@@ -16,18 +18,55 @@ gulp.task('css',function(){
     .pipe(autoPrefixer())
     .pipe(gulp.dest('./'));
 });
+
 gulp.task('babel',function(){
-  gulp.src(['src/js/**/*.js'])
-    .pipe(plumber({
-      handleError: function (err) {
-        console.log(err);
-        this.emit('end');
-      }
-    }))
-    .pipe(babel())
-      .pipe(browserify())
-    .pipe(gulp.dest('./'));
+  browserify('src/js/index-page.js', { debug: true })
+    .transform(babelify)
+    .bundle()
+    .on("error", function (err) { console.log("Error : " + err.message); })
+    .pipe(source('index-page.js'))
+    .pipe(gulp.dest('./'))
+  browserify('src/js/calendar-page.js', { debug: true })
+    .transform(babelify)
+    .bundle()
+    .on("error", function (err) { console.log("Error : " + err.message); })
+    .pipe(source('calendar-page.js'))
+    .pipe(gulp.dest('./'))
+  browserify('src/js/home-page.js', { debug: true })
+    .transform(babelify)
+    .bundle()
+    .on("error", function (err) { console.log("Error : " + err.message); })
+    .pipe(source('home-page.js'))
+    .pipe(gulp.dest('./'))
+  browserify('src/js/new-page-page.js', { debug: true })
+    .transform(babelify)
+    .bundle()
+    .on("error", function (err) { console.log("Error : " + err.message); })
+    .pipe(source('new-page-page.js'))
+    .pipe(gulp.dest('./'))
+  browserify('src/js/graph-page.js', { debug: true })
+    .transform(babelify)
+    .bundle()
+    .on("error", function (err) { console.log("Error : " + err.message); })
+    .pipe(source('graph-page.js'))
+    .pipe(gulp.dest('./'))
+  // browserify('src/js/script.js', { debug: true })
+  //   .transform(babelify)
+  //   .bundle()
+  //   .on("error", function (err) { console.log("Error : " + err.message); })
+  //   .pipe(source('script.js'))
+  //   .pipe(gulp.dest('./'))
 });
+
+gulp.task('babelcale',function(){
+  browserify('src/js/cale.js', { debug: true })
+    .transform(babelify)
+    .bundle()
+    .on("error", function (err) { console.log("Error : " + err.message); })
+    .pipe(source('cale.js'))
+    .pipe(gulp.dest('./'))
+});
+
 gulp.task('html',function(){
   gulp.src(['src/html/**/*.html'])
     .pipe(plumber({
@@ -38,6 +77,7 @@ gulp.task('html',function(){
     }))
     .pipe(gulp.dest('./'));
 });
+
 gulp.task('default',function(){
   gulp.watch('src/js/**/*.js',['babel']);
   gulp.watch('src/css/**/*.css',['css']);

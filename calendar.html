@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Calendar</title>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <link rel="stylesheet" href="node_modules/react-big-calendar/lib/css/react-big-calendar.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="node_modules/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/onsenui/js/onsenui.js"></script>
+    <link rel="stylesheet" href="node_modules/onsenui/css/onsenui.css" />
+    <link rel="stylesheet" href="node_modules/onsenui/css/onsen-css-components-default.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
+    <script src="calendar-page.js"></script>
+    <script>ons.bootstrap()</script>
+  </head>
+  <body>
+    <div class="app"></div>
+    <ons-tabbar style="position: fixed">
+      <ons-tab label="ホーム" icon="fa-home" onclick="location.href='home.html';"></ons-tab>
+      <ons-tab label="カレンダー" icon="fa-calendar" active="true" onclick="location.href='calendar.html';"></ons-tab>
+      <ons-tab label="グラフ" icon="fa-bar-chart" onclick="location.href='graph.html';"></ons-tab>
+    </ons-tabbar>
+  </body>
+</html>

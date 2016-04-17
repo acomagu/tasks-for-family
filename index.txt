@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <script src="components/loader.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <script src="js/ncmb.min.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+ons.bootstrap()
+  .controller("myCtrl", function($scope){
+    $scope.getW = function(){
+      var el = ncmb.DataStore("Work");
+      el.fetchAll()
+        .then(function(res){
+          $scope.userworks = res;
+          console.log("hoge");
+        })
+      .catch(function(err){
+        console.log("error")
+      }); 
+    }
+  });
+    </script>
+    <style type="text/css">
+        li {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <ons-navigator var="myNavigator" page="page2.html">
+    </ons-navigator> 
+    <ons-tabbar ng-controller="myCtrl">
+        <ons-tab page="page1.html" label="ホーム" icon="fa-home" ng-click = "getW()" active = "true" no-load></ons-tab>
+        <ons-tab page="page2.html" label="カレンダー" icon="fa-calendar"></ons-tab>
+        <ons-tab page="page3.html" label="グラフ" icon="fa-bar-chart"></ons-tab>
+    </ons-tabbar>
+</body>
+</html>

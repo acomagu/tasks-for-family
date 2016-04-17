@@ -1,0 +1,28 @@
+<!--<ons-toolbar>
+    <div class="left"><ons-back-button>Back</ons-back-button></div>
+    <div class="center">New Page</div>
+</ons-toolbar>-->
+<div style="text-align: center" id="modal" class="modal">
+    <br />
+    <br />
+    <p>
+       タスクの追加
+       <br>
+    </p>
+    内容
+    <br />
+    <textarea class="textarea" id="ta" style="height: 40%;"></textarea>
+    <br />
+    <br />
+    期限
+    <br />
+    <input type="date" class="text-input" id="Deadline-input">
+    <br />
+    まで
+    <br />
+    <br />
+    <ons-button class="submit-button" ng-click='submit(document.querySelector(".textarea").value, document.querySelector(".text-input").value);myNavigator.popPage("new_page.html",{animation:"liftoff"});'>
+	    追加
+	</ons-button>
+</div>
+<script src="modal.js"></script>

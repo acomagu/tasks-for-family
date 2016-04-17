@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="node_modules/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/onsenui/js/onsenui.js"></script>
+    <link rel="stylesheet" href="node_modules/onsenui/css/onsenui.css" />
+    <link rel="stylesheet" href="node_modules/onsenui/css/onsen-css-components-default.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
+    <!-- <script src="script.js"></script> -->
+    <script src="index-page.js"></script>
+    <script src="new-page-page.js"></script>
+  </head>
+  <body style="background-image: url(b066.gif);">
+    <ons-navigator var="myNavigator">
+      <ons-toolbar>
+        <div class="left" style="padding: 33px 0 0 10px;">Today</div>
+        <div class="right" style="padding: 21px 85px 0 0; color: red; font-size: 70px;" ng-click='myNavigator.pushPage("new_page.html",{animation:"lift"})'><i class="fa fa-plus-circle" aria-hidden="true" style="background-color: white;  border-radius:50%;"></i></div>
+      </ons-toolbar>
+      <div ng-controller="myCtrl">
+        <div ng-repeat="user in userworks">
+          <img src="samune.png" style="float: left; width: 15%; padding: 10px 0 0 5px;" />
+          <p style="position: absolute; color: green; width: 50%; padding: 60px 0 0 90px;">{{ user.work_contents }}</p>
+          <p style="position: absolute; font-size: 10px; width: 100%; padding: 150px 0 0 120px;">○人中△人完了 -- 4/20投稿</p>
+          <img src="hukidasi.png" style="width: 58%; padding: 25px 0 0 4px;" />
+        </div>
+      </div>
+      <ons-tabbar style="position: fixed">
+        <ons-tab label="ホーム" icon="fa-home" active="true" onclick="location.href='home.html';"></ons-tab>
+        <ons-tab label="カレンダー" icon="fa-calendar" onclick="location.href='calendar.html';"></ons-tab>
+        <ons-tab label="グラフ" icon="fa-bar-chart" onclick="location.href='graph.html';"></ons-tab>
+      </ons-tabbar>
+    </ons-navigator> 
+  </body>
+</html>
